@@ -107,6 +107,11 @@ const agents = [
       'Equip Codex with MCP-backed commands to fetch data, run operations, and report results without context overhead.',
   },
   {
+    name: 'OpenCode',
+    description:
+      'Let OpenCode reach remote MCP tools as lightweight shell commands — discover, call, and chain actions without context bloat.',
+  },
+  {
     name: 'Any Agent',
     description:
       'mcpshim is agent-agnostic. Any AI that can run a shell command or read from a Unix socket gets instant MCP access.',
