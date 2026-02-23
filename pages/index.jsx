@@ -593,12 +593,12 @@ export default function Index() {
             </div>
 
             <div className="flex justify-center">
-              <div className="relative group">
+              <Link href="/about" className="relative group">
                 <div className="absolute inset-0 bg-accent/20 blur-3xl rounded-full group-hover:bg-accent/30 transition" />
                 <div className="relative w-48 h-48 rounded-3xl border border-stroke bg-background-secondary/50 flex items-center justify-center group-hover:border-accent/50 transition-colors cursor-pointer">
                   <Logo className="size-24 text-accent animate-shimmer" />
                 </div>
-              </div>
+              </Link>
             </div>
           </div>
         </div>

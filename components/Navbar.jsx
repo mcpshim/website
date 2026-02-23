@@ -14,6 +14,7 @@ export default function Navbar() {
     { href: '#features', label: 'Features' },
     { href: '#quick-start', label: 'Quick Start' },
     { href: '#installation', label: 'Install' },
+    { href: '/about', label: 'About', accent: true },
     { href: 'https://github.com/mcpshim/mcpshim', label: 'GitHub' },
   ]
 
@@ -22,7 +23,7 @@ export default function Navbar() {
       <div className="relative container flex items-center justify-between h-full">
         <Link href="/" className="flex items-center space-x-3 group">
           <Logo className="text-accent group-hover:text-accent-secondary transition-colors" />
-          <p className="font-bold text-xl tracking-tight text-white">mcpshim</p>
+          <p className="font-bold text-xl tracking-tight text-white">MCPShim</p>
         </Link>
 
         {/* Desktop Menu */}
