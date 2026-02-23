@@ -1,0 +1,41 @@
+{
+  "extends": ["next", "next/core-web-vitals"],
+  "rules": {
+    "react/button-has-type": [
+      "error",
+      {
+        "button": true,
+        "submit": true,
+        "reset": true
+      }
+    ],
+    "import/extensions": [
+      "error",
+      "always",
+      {
+        "ignorePackages": true,
+        "pattern": {
+          "js": "never",
+          "jsx": "never",
+          "ts": "never",
+          "tsx": "never",
+          "json": "always",
+          "yaml": "always",
+          "svg": "always",
+          "css": "always",
+          "ttf": "always",
+          "woff": "always",
+          "woff2": "always"
+        }
+      }
+    ],
+    "@next/next/no-img-element": ["off"],
+    "no-undef": "error",
+    "react-hooks/exhaustive-deps": [
+      "warn",
+      {
+        "additionalHooks": "(useFunctionHandler|useFunctionDispatch|useAborter|useDeps)"
+      }
+    ]
+  }
+}
