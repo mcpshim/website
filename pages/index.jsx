@@ -27,16 +27,16 @@ import {
 
 const features = [
   {
-    icon: Cable,
-    title: 'Persistent daemon, local socket',
+    icon: Terminal,
+    title: 'MCP tools become CLI commands',
     description:
-      'mcpshimd keeps remote MCP connections alive and exposes one local Unix socket for fast, repeatable command execution.',
+      'Every remote MCP tool is exposed as a standard shell command with flags that map to tool parameters. Call them from any script, agent, or pipeline.',
   },
   {
     icon: Wrench,
     title: 'Dynamic tool discovery',
     description:
-      'The daemon discovers server capabilities and tools on your behalf, then the CLI calls them without manual wrapper code.',
+      'The daemon discovers server capabilities automatically. The CLI surfaces them as callable commands without manual wrapper code.',
   },
   {
     icon: Command,
@@ -51,16 +51,16 @@ const features = [
       'Config is the source of truth for server registration. Add servers by URL, set auth headers, reload, and keep everything deterministic.',
   },
   {
-    icon: Database,
-    title: 'SQLite-backed runtime state',
+    icon: KeyRound,
+    title: 'Auth handled for you',
     description:
-      'Call history and OAuth tokens are persisted in a local SQLite database for reliable agent context and repeatable sessions.',
+      'OAuth flows, API keys, and header-based auth are centralized in the daemon. Your commands just work.',
   },
   {
     icon: Workflow,
     title: 'Agent-ready and composable',
     description:
-      'Avoid context pollution from huge MCP tool definitions: register capabilities as simple local commands and invoke only what an agent needs.',
+      'Avoid loading huge MCP schemas into model context. Register tools once, invoke only what the agent needs as simple CLI calls.',
   },
 ]
 
@@ -69,19 +69,19 @@ const useCases = [
     icon: Zap,
     title: 'Agent tool orchestration',
     description:
-      'Let your AI agent discover and call remote MCP tools through thin local commands instead of embedding entire server SDKs.',
+      'Let your AI agent discover and call remote MCP tools as standard CLI commands instead of embedding entire server SDKs.',
   },
   {
     icon: Workflow,
-    title: 'Context pollution elimination',
+    title: 'Context-efficient tool use',
     description:
-      'Stop loading hundreds of MCP tool definitions into model context. Register capabilities once, invoke only what you need per session.',
+      'Stop loading hundreds of MCP tool definitions into model context. Call tools by name from the shell - the agent only sees what it invokes.',
   },
   {
     icon: Server,
-    title: 'MCP gateway consolidation',
+    title: 'Unified MCP gateway',
     description:
-      'Route multiple remote MCP servers through one daemon with unified auth, history, and config — one socket to rule them all.',
+      'Route multiple remote MCP servers through one daemon with centralized auth, history, and config - every tool exposed as a CLI command.',
   },
 ]
 
@@ -94,7 +94,7 @@ const agents = [
   {
     name: 'Claude',
     description:
-      'Let Claude invoke remote MCP tools through thin shell commands — no SDK bloat in context, just call what it needs.',
+      'Let Claude invoke remote MCP tools through thin shell commands - no SDK bloat in context, just call what it needs.',
   },
   {
     name: 'Gemini',
@@ -109,7 +109,7 @@ const agents = [
   {
     name: 'OpenCode',
     description:
-      'Let OpenCode reach remote MCP tools as lightweight shell commands — discover, call, and chain actions without context bloat.',
+      'Let OpenCode reach remote MCP tools as lightweight shell commands - discover, call, and chain actions without context bloat.',
   },
   {
     name: 'Any Agent',
@@ -170,20 +170,18 @@ function InstallationSection() {
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-content mb-2">
-                      1. Install binaries
+                      1. Give your agent the install skill
                     </h3>
                     <p className="text-content-secondary text-sm mb-4">
-                      Tell your agent to run the Go install commands to get the
-                      daemon and CLI.
+                      Run this command to download the MCPShim install skill.
+                      Then ask your agent to follow the instructions inside.
                     </p>
-                    <div className="rounded-xl border border-stroke bg-background-tertiary/30 p-4 font-mono text-sm space-y-2">
-                      <div className="text-accent break-all">
-                        go install
-                        github.com/mcpshim/mcpshim/cmd/mcpshimd@latest
-                      </div>
-                      <div className="text-accent break-all">
-                        go install github.com/mcpshim/mcpshim/cmd/mcpshim@latest
-                      </div>
+                    <div className="rounded-xl border border-stroke bg-background-tertiary/30 p-4 font-mono text-sm overflow-x-auto">
+                      <code className="text-accent break-all">
+                        curl -fsSL
+                        https://raw.githubusercontent.com/mcpshim/skills/refs/heads/master/mcpshim-install/SKILL.md
+                        -o MCPSHIM_INSTALL.md
+                      </code>
                     </div>
                   </div>
                 </div>
@@ -194,16 +192,17 @@ function InstallationSection() {
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-content mb-2">
-                      2. Ask your agent to configure and start
+                      2. Ask your agent to install MCPShim
                     </h3>
                     <p className="text-content-secondary text-sm mb-4">
                       Paste something like this into your agent&apos;s chat:
                     </p>
                     <div className="rounded-xl border border-accent/20 bg-accent/5 p-4 text-sm">
                       <p className="text-content italic">
-                        &ldquo;Create a mcpshim config at
-                        ~/.config/mcpshim/config.yaml with the servers I need,
-                        start mcpshimd, and verify with mcpshim status.&rdquo;
+                        &ldquo;Read MCPSHIM_INSTALL.md and follow the
+                        instructions to install mcpshim, configure it with the
+                        MCP servers I need, start the daemon, and verify with
+                        mcpshim status.&rdquo;
                       </p>
                     </div>
                   </div>
@@ -211,8 +210,8 @@ function InstallationSection() {
               </div>
 
               <p className="text-content-secondary text-sm text-center">
-                Your agent will create the config, start the daemon, and verify
-                everything is working — autonomously.
+                Your agent will install the binaries, create the config, start
+                the daemon, and verify everything is working - autonomously.
               </p>
             </div>
           )}
@@ -299,18 +298,18 @@ export default function Index() {
             </div>
 
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">
-              <span className="text-content">mcpshim</span>
+              <span className="text-content">MCPShim</span>
               <br />
               <span className="text-accent text-glow">
-                MCP as local commands
+                MCP tools as CLI commands
               </span>
             </h1>
 
             <p className="text-lg md:text-xl text-content-secondary max-w-xl mb-8">
-              Turn remote MCP servers into simple shell commands.
-              <span className="text-content font-medium"> mcpshim</span> keeps
-              sessions in a daemon, discovers tools once, and avoids loading
-              endless metadata into model context.
+              Use any MCP server as a standard shell command.
+              <span className="text-content font-medium"> mcpshim</span> turns
+              remote tools into native CLI commands your agent can call directly
+              - no SDKs, no schema bloat, just shell.
             </p>
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
@@ -377,8 +376,8 @@ export default function Index() {
               </h2>
               <p className="text-content-secondary text-lg mb-8">
                 mcpshim sits between your agent and remote MCP servers. The
-                daemon holds connections; the CLI translates flags into tool
-                calls.
+                daemon holds connections; the CLI exposes every tool as a
+                standard command.
               </p>
 
               <div className="space-y-6">
@@ -399,7 +398,7 @@ export default function Index() {
                     step: '03',
                     title: 'Call tools from the shell',
                     description:
-                      'Use mcpshim call or generated wrapper scripts — flags become MCP arguments automatically.',
+                      'Use mcpshim call or generated wrapper scripts - flags become MCP arguments automatically.',
                   },
                 ].map((item) => (
                   <div key={item.step} className="flex gap-4">
@@ -518,7 +517,7 @@ export default function Index() {
               Works with every AI agent
             </h2>
             <p className="text-content-secondary text-lg max-w-2xl mx-auto">
-              Copilot, Claude, Gemini, Codex — it doesn&apos;t matter. If your
+              Copilot, Claude, Gemini, Codex - it doesn&apos;t matter. If your
               agent can run a command, it can use any MCP server.
             </p>
           </div>
@@ -546,9 +545,9 @@ export default function Index() {
 
           <div className="mt-12 max-w-2xl mx-auto text-center">
             <p className="text-content-secondary text-sm">
-              mcpshim exposes MCP tools as composable CLI commands. Any AI agent
+              mcpshim exposes MCP tools as standard CLI commands. Any AI agent
               that supports tool-use, function calling, or shell execution can
-              pick them up instantly — zero custom integration code.
+              call them directly - zero custom integration code.
             </p>
           </div>
         </div>
@@ -564,17 +563,15 @@ export default function Index() {
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-accent/30 bg-accent/5 mb-6">
                 <Cable className="size-4 text-accent" />
-                <span className="text-xs text-accent">
-                  Daemon + socket architecture
-                </span>
+                <span className="text-xs text-accent">Under the hood</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-content mb-6">
-                One socket for every MCP server
+                One daemon, every MCP server
               </h2>
               <p className="text-content-secondary text-lg mb-8">
                 Your agent doesn&apos;t need to manage connections, auth tokens,
-                or capability schemas. mcpshim normalizes everything behind a
-                single local protocol so the agent can focus on reasoning.
+                or capability schemas. mcpshim handles all of that so your CLI
+                commands just work.
               </p>
 
               <ul className="space-y-4">
@@ -627,7 +624,7 @@ export default function Index() {
                 >
                   Pantalk
                 </Link>{' '}
-                gives it a voice — letting AI agents send, receive, and stream
+                gives it a voice - letting AI agents send, receive, and stream
                 messages across Slack, Discord, Telegram, and 7 more platforms.
                 Together they form a complete agent infrastructure stack.
               </p>
@@ -689,8 +686,8 @@ Index.getLayout = function (children) {
   return (
     <>
       <Meta
-        title="mcpshim - MCP as Local Commands"
-        description="mcpshim is an open source daemon and CLI that turns remote MCP servers into simple shell commands for AI agents and developers."
+        title="MCPShim - MCP Tools as CLI Commands"
+        description="MCPShim is an open source daemon and CLI that turns remote MCP tools into standard shell commands for AI agents and developers."
         keywords={[
           'mcpshim',
           'mcp',
