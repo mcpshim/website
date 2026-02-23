@@ -602,6 +602,50 @@ export default function Index() {
         </div>
       </section>
 
+      {/* Companion Project Section */}
+      <section className="py-24 border-t border-stroke/50">
+        <div className="container">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
+            <div className="max-w-lg">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-accent/30 bg-accent/5 mb-6">
+                <Plug className="size-4 text-accent" />
+                <span className="text-xs text-accent">Companion project</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-content mb-3">
+                Give your agent a voice too
+              </h2>
+              <p className="text-content-secondary">
+                mcpshim gives your agent tools.{' '}
+                <Link
+                  href="https://pantalk.dev"
+                  className="text-accent hover:text-accent-secondary transition-colors"
+                >
+                  Pantalk
+                </Link>{' '}
+                gives it a voice — letting AI agents send, receive, and stream
+                messages across Slack, Discord, Telegram, and 7 more platforms.
+                Together they form a complete agent infrastructure stack.
+              </p>
+            </div>
+            <div className="flex items-center gap-4">
+              <Link
+                href="https://pantalk.dev"
+                className="px-6 text-sm py-3 bg-accent hover:bg-accent-secondary text-black font-medium rounded-full flex items-center justify-center gap-2 transition-all whitespace-nowrap"
+              >
+                Explore Pantalk
+                <ArrowRight className="size-4" />
+              </Link>
+              <Link
+                href="https://github.com/pantalk/pantalk"
+                className="px-6 text-sm py-3 bg-background-secondary text-content-secondary hover:text-content border border-stroke rounded-full flex items-center justify-center gap-2 hover:bg-background-tertiary transition-all whitespace-nowrap"
+              >
+                GitHub
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Help & Support Section */}
       <section className="py-24 border-t border-stroke/50">
         <div className="container">
@@ -661,6 +705,9 @@ Index.getLayout = function (children) {
           'golang',
           'context pollution',
           'agentic workflows',
+          'pantalk',
+          'chat bot',
+          'agent chat',
         ]}
         thisUrl="https://mcpshim.dev"
       />
