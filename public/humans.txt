@@ -1,0 +1,5 @@
+/* Contact */
+Maintainer: ChatBotKit
+Website: https://cbk.ai
+Contact: support@chatbotkit.com
+Twitter: @ChatBotKit

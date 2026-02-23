@@ -1,0 +1,3 @@
+Contact: security@chatbotkit.com
+Preferred-Languages: en
+Canonical: https://mcpshim.dev/.well-known/security.txt
