@@ -620,7 +620,7 @@ export default function Index() {
                 Give your agent a voice too
               </h2>
               <p className="text-content-secondary">
-                mcpshim gives your agent tools.{' '}
+                MCPShim gives your agent tools.{' '}
                 <Link
                   href="https://pantalk.dev"
                   className="text-accent hover:text-accent-secondary transition-colors"
